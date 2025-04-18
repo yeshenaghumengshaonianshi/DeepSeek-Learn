@@ -51,11 +51,44 @@ def get_default_download_dir(model_name=DEFAULT_MODEL_NAME):
 # 是否信任远程代码，设置为True允许模型执行随模型文件提供的Python代码
 MODEL_TRUST_REMOTE_CODE = True
 # 是否使用快速分词器，设置为False表示使用Python实现的分词器，可能更可靠但更慢
-MODEL_USE_FAST_TOKENIZER = False
+MODEL_USE_FAST_TOKENIZER = True
 # 是否使用低内存加载模式，有助于在内存受限的环境中加载大模型
 MODEL_LOW_CPU_MEM_USAGE = True
-# 设备映射策略，"auto"表示自动选择最佳设备配置
-MODEL_DEVICE_MAP = "auto"
+# 设备映射策略，"auto"表示自动选择最佳设备配置,"cuda:0"表示指定使用GPU设备
+MODEL_DEVICE_MAP = "cuda:0"
+
+# ============= 量化配置 =============
+# 默认量化输出目录
+QUANTIZE_OUTPUT_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "models", "quantized")
+
+# 量化类型选项
+QUANTIZE_TYPES = {
+    "dynamic_int8": "PyTorch动态INT8量化（Windows完全兼容）",
+    "dynamic_fp16": "Float16半精度量化（Windows完全兼容）",
+    "ggml_q4": "GGML Q4量化（需要安装ctransformers库）",
+    "ggml_q8": "GGML Q8量化（需要安装ctransformers库）"
+}
+
+# 默认量化类型
+DEFAULT_QUANTIZE_TYPE = "dynamic_int8"
+
+# 性能测试设置
+BENCHMARK_DEFAULT_PROMPTS = [
+    "请介绍一下人工智能的发展历史和主要应用领域。",
+    "什么是深度学习？它与传统机器学习有什么区别？",
+    "解释一下大语言模型是如何工作的，以及它们面临的主要挑战。",
+    "请为一个电商网站编写一个产品推荐算法的伪代码。",
+    "如何评估一个自然语言处理模型的性能？请详细说明。"
+]
+
+# 性能测试输出目录
+BENCHMARK_OUTPUT_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "benchmark_results")
+
+# 量化依赖包
+QUANTIZE_DEPENDENCIES = {
+    "basic": ["torch", "transformers", "tqdm", "psutil"],
+    "ggml": ["ctransformers", "huggingface_hub[cli]"]
+}
 
 # 其他配置可以在此继续添加
 

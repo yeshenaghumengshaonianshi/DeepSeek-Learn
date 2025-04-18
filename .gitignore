@@ -25,24 +25,27 @@ venv/
 env/
 ENV/
 
-# 模型文件和缓存
-models/
-*.bin
-*.pt
-*.safetensors
-*.model
-offload_folder/
-
-# 日志文件
-logs/
-*.log
-
 # IDE相关
 .idea/
 .vscode/
 *.swp
 *.swo
-
-# 操作系统相关
 .DS_Store
-Thumbs.db 
+
+# 模型文件（通常太大）
+*.bin
+*.pt
+*.pth
+*.onnx
+*.gguf
+models/
+
+# 日志和临时文件
+*.log
+logs/
+tmp/
+temp/
+
+# 其他特定文件
+node_modules/
+.ipynb_checkpoints/ 
