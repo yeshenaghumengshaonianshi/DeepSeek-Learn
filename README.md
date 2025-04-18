@@ -88,6 +88,3 @@ docker run --gpus all -p 8000:8000 -v /path/to/models:/app/models vllm-demo
 
 欢迎提交问题报告或功能请求。如需贡献代码，请先fork本仓库，然后提交pull request。
 
-## 许可证
-
-MIT License

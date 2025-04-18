@@ -318,7 +318,7 @@ def quantize_model(args):
         return None
     
     # 保存量化后的模型
-    logger.info(f"保存量化后的模型到: {output_dir}")
+    logger.info(f"保存量化后的模型到: {output_dir}"),
     try:
         # 确保模型在CPU上以便保存
         quantized_model = quantized_model.cpu()
